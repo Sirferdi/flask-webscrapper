@@ -4,6 +4,9 @@ from datetime import datetime, timedelta
 from selenium import webdriver
 from requests_html import HTMLSession
 
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 
 # Get the values  from the command line arguments
 # site = sys.argv[1]
@@ -24,7 +27,7 @@ def screen_message(msg: str):
         f.write(str(datetime.utcnow()) + " | " + msg +'\n')
 
 def scrap_page(url: str, clicks: int = 1):
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(chrome_options=options)
     driver.get(url)
     if url == 'https://www.real.discount/udemy-coupon-code/':
         button = driver.find_element(by='css selector', value="input.btn.btn-primary[onclick='load_all(2)']")
