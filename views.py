@@ -18,7 +18,7 @@ def scrap():
     site = request.args.get('site')
     max_courses = request.args.get('mc')
     max_days = request.args.get('mdo')
-    return main.web_scrap(site, int(max_courses), int(max_days))
+    return app.web_scrap(site, int(max_courses), int(max_days))
 
 @views.route('/scrap-output')
 def scrap_output():
